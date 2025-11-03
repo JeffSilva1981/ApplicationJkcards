@@ -3,11 +3,10 @@ package com.jkcards.ecommerce.entities;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,8 +24,8 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany
-    @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "tb_user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private HashSet<Role> roles = new HashSet<>();
 
     public User(){
